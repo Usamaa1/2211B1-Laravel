@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Index;
-
+use App\Http\Controllers\ProductsView;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[Index::class, 'viewIndex']);
 
-Route::post('/dataSent', [Index::class, 'data']);
+Route::get('/insert', [ProductsView::class,'insertPage']);
+
+Route::post('/insertData',[ProductsController::class, 'insertData']);
+
+Route::get('/view', [ProductsController::class,'view']);
+
+Route::get('/delete/{id}', [ProductsController::class,'deleteProducts']);
+
+Route::get('/update/{id}', [ProductsController::class,'updatePage']);
+
+
+Route::post('/updateData/{id}',[ProductsController::class, 'updateProducts']);
+
+
